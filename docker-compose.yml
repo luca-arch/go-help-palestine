@@ -1,0 +1,19 @@
+
+services:
+
+  backend:
+    build: ./go-application
+    cpus: 0.25
+    environment:
+      TG_BOT_TOKEN: ""
+      TG_CHANNEL: ""
+    mem_limit: "64M"
+
+  frontend:
+    build: ./react-application
+    cpus: 1
+    depends_on:
+      - backend
+    mem_limit: "256M"
+    ports:
+      - "8080:8080"
