@@ -1,5 +1,7 @@
 const style: React.CSSProperties = {
   display: "block",
+  margin: "0 auto",
+  maxWidth: "1200px",
   width: "100%",
 };
 

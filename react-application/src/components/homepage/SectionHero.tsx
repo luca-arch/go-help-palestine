@@ -11,18 +11,13 @@ const imgStyle: React.CSSProperties = {
 const SectionHero: React.FC = () => (
   <Section>
     <img
-      alt="What can we do to help Palestine"
+      alt="What we can do to help Palestine"
       id="main-banner"
       src="/banner.jpg"
       style={imgStyle}
     />
 
     <h1 style={{ fontSize: "2em" }}>A message from the author</h1>
-
-    <p>
-      This is not about politics, nor it is to let you decide whether to pick
-      one side or the other.
-    </p>
 
     <p>
       There are some really bad atrocities going on right now all around the

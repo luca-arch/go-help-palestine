@@ -56,7 +56,7 @@ const HowToHelp: React.FC = () => (
     <p>
       Be open, be smart. Take one step at a time, it will take you no effort!
       <br />
-      And you won't necessarely have to donate any money, if you can't afford
+      And you won't necessarely have to donate any money, unless you can afford
       it!
     </p>
 

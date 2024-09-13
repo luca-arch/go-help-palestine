@@ -46,8 +46,12 @@ const Conversation: React.FC = () => (
       <br />
       Another point is about just keeping the headlines about Palestine, because
       if it changes to something else, like it already has - it’s almost been a
-      year of war - and to keep the funds coming into the country and all of
-      these things... You NEED to keep talking about it!
+      year of{" "}
+      <strong title="Technically, the conflic has been going on for over 75 years, this is like the 14th war on Gaza">
+        genocide
+      </strong>{" "}
+      - and to keep the funds coming into the country and all of these things...
+      You NEED to keep talking about it!
       <br />
       So it’s not necessarely about what her, herself do, but what we do as a
       collective.
@@ -70,9 +74,7 @@ const Conversation: React.FC = () => (
       think that it is properly good to keep sharing the message, keeping people
       aware that this is an ongoing situation...
       <br />I know there is a ton of s**t going on in the world right now, but I
-      think having a debate over it... I don’t know how the conversation you and
-      your friend had, but for me, it’s kind of... like... I would have just
-      dropped it at “oh you post and I don’t.”
+      think having a debate over it is never useless...
     </Blockquote>
 
     <p>
@@ -86,9 +88,9 @@ const Conversation: React.FC = () => (
       some people want to work directly on the field, others work in policy,
       others work in other jobs and then just do what they can outside of their
       job.
-      <br />
-      I think as long as you’re kind of aware of your privilege and doing what
-      you can, it’s already better than a lot of people.
+      <br />I think as long as you’re aware of your privilege,{" "}
+      <strong>stay educated</strong>
+      and doing what you can, it’s already better than a lot of people.
       <br />
       It’s normal to feel helpless as an individual, but it’s about connecting
       and working together, not doing something alone that has a big impact
