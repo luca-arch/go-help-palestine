@@ -126,6 +126,12 @@ func (ms *MessageSender) LimitedSend(name string, message string) {
 		return
 	}
 
+	if ms.logger.Handler().Enabled(ctx, slog.LevelDebug) {
+		body, err := io.ReadAll(res.Body)
+
+		ms.logger.Debug("api.telegram.org response", "body", string(body), "error", err)
+	}
+
 	if res.StatusCode == http.StatusOK {
 		ms.logger.Debug("Telegram message sent", "name", name)
 	} else {
