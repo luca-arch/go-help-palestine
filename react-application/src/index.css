@@ -1,0 +1,37 @@
+:root {
+  line-height: 1.5;
+  font-synthesis: none;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  background-color: #043f2e;
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  margin: 0;
+}
+
+body {
+  min-width: 300px;
+  min-height: 100vh;
+  padding: 10px 0 0 0;
+}
+
+a,
+a:visited {
+  color: #6699cc;
+}
+
+a:hover {
+  color: #6672cc;
+}
+
+em {
+  font-family: initial;
+  font-style: italic;
+}

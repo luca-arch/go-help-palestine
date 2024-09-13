@@ -1,0 +1,8 @@
+User-agent: *
+
+Allow: /
+Allow: /banner.jpg
+Allow: /banner-hashtag.png
+Allow: /contacts
+Allow: /how-to-help
+Allow: /stef-point-of-view
