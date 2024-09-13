@@ -71,7 +71,7 @@ const Conversation: React.FC = () => (
       Do I tell everyone they’re a terrible person if they don’t post? No, but I
       think that it is good if you do post... It doesn’t have to be like every
       day but whatever, it’s just like, for me, I just try to post because I
-      think that it is properly good to keep sharing the message, keeping people
+      think that it is probably good to keep sharing the message, keeping people
       aware that this is an ongoing situation...
       <br />I know there is a ton of s**t going on in the world right now, but I
       think having a debate over it is never useless...

@@ -15,8 +15,25 @@ const Heading2 = styled.h2`
   margin: 18px 0 15px 0;
 `;
 
+const List = styled.ul`
+  text-align: left;
+  margin-left: 0;
+
+  @media (max-width: 700px) {
+    padding-left: 10px;
+    text-align: justify;
+  }
+`;
+
 const AwesomeLinksList: React.FC = () => (
-  <ul style={{ textAlign: "left" }}>
+  <List>
+    <li>
+      <ExternalLink url="https://www.instagram.com/letstalkpalestine/">
+        @letstalkpalestine
+      </ExternalLink>
+      - Let’s Talk Palestine, <strong>very active</strong> (Instagram / multiple
+      accounts in English, Spanish, Italian and Portuguese)
+    </li>
     <li>
       <ExternalLink url={SAMMY_IG_URL}>@sammyobeid</ExternalLink> - the comedian
       who is running the CeaseFire tour (Instagram account).
@@ -35,6 +52,13 @@ const AwesomeLinksList: React.FC = () => (
       - their Telegram channel.
     </li>
     <li>
+      <ExternalLink url="https://www.instagram.com/jewishvoiceforpeace/">
+        Jewish Voice for Peace
+      </ExternalLink>
+      - organizing toward Palestinian liberation and Judaism beyond Zionism
+      (Instagram)
+    </li>
+    <li>
       <ExternalLink url="https://www.instagram.com/everydaypalestine/">
         EveryDayPalestine
       </ExternalLink>{" "}
@@ -46,7 +70,118 @@ const AwesomeLinksList: React.FC = () => (
         Facebook page
       </ExternalLink>
     </li>
-  </ul>
+    <li>
+      <ExternalLink url="https://www.instagram.com/souloffilasteen/">
+        Soul of Filasteen
+      </ExternalLink>
+      - elevating Palestinuan voices, one story at a time (Instagram, based in
+      Ramallah)
+    </li>
+    <li>
+      <ExternalLink url="https://www.instagram.com/rosypirani/">
+        Rosy Fazil Pirani
+      </ExternalLink>
+      - lawyer and Humanitarian, founder of @kozykulture (Instagram)
+    </li>
+    <li>
+      <ExternalLink url="https://www.instagram.com/imamomarsuleiman/">
+        Imam Omar Suleiman
+      </ExternalLink>
+      - advocate for humanity, <strong>very active</strong> (Instagram)
+    </li>
+    <li>
+      <ExternalLink url="https://www.instagram.com/zeenaaqel/">
+        Zeena Aqel
+      </ExternalLink>
+      - proud Palestinian, I Speak Up,Empower Women and Believe ”The Power Of
+      The People Is Greater Than The People In Power” (Instagram)
+    </li>
+    <li>
+      <ExternalLink url="https://www.instagram.com/_doaa_mohammad/">
+        Doaa Albaz
+      </ExternalLink>
+      - press Photographer in Palestine (Instagram)
+    </li>
+    <li>
+      <ExternalLink url="https://www.instagram.com/eye.on.palestine/">
+        @eye.on.palestine
+      </ExternalLink>
+      - news &amp; Media, uncensored (Instagram)
+    </li>
+    <li>
+      <ExternalLink url="https://www.instagram.com/wael_eldahdouh/">
+        Wael Al Dahdouh
+      </ExternalLink>
+      - press Photographer in Palestine (Instagram)
+      <br />
+      also on{" "}
+      <ExternalLink url="https://x.com/WaelDahdouh">Twitter / X</ExternalLink>
+    </li>
+    <li>
+      <ExternalLink url="https://www.instagram.com/hindkhoudary/">
+        Hind Khoudary
+      </ExternalLink>
+      - journalist (Instagram)
+    </li>
+    <li>
+      <ExternalLink url="https://www.instagram.com/khaledbeydoun/">
+        Khaled Beydoun
+      </ExternalLink>
+      - law professor (Instagram)
+    </li>
+    <li>
+      <ExternalLink url="https://www.instagram.com/motaz_azaiza/">
+        Motaz Azaiza
+      </ExternalLink>
+      - photographer, activist (Instagram)
+    </li>
+    <li>
+      <ExternalLink url="https://www.instagram.com/m.z.gaza/">
+        Mohammed Zaanoun
+      </ExternalLink>
+      - photojournalist,Documentary filmmake (Instagram)
+    </li>
+    <li>
+      <ExternalLink url="https://www.instagram.com/plestia.alaqad/">
+        Plestia Alaqad
+      </ExternalLink>
+      - journalist (Instagram)
+    </li>
+    <li>
+      <ExternalLink url="https://www.instagram.com/palestinianyouthmovement/">
+        Palestinian Youth Movement
+      </ExternalLink>
+      - transnational independent movement of Palestinian & Arab youth
+      struggling for the liberation of their homeland (Instagram)
+    </li>
+    <li>
+      <ExternalLink url="https://www.instagram.com/myzfrancois/">
+        Dr Myriam Francois
+      </ExternalLink>
+      - presenter, documentary film-maker (Instagram)
+    </li>
+    <li>
+      <ExternalLink url="https://linktr.ee/fababs">Abby Martin</ExternalLink>-
+      journalist for @empirefiles (LinkTree, with all her social media accounts)
+    </li>
+    <li>
+      <ExternalLink url="https://www.instagram.com/wissamgaza/">
+        Wissam Nassar
+      </ExternalLink>
+      - photographer, <strong>very active</strong>, possibly{" "}
+      <ExternalLink url="https://en.wikipedia.org/wiki/Shadow_banning">
+        shadow-banned
+      </ExternalLink>{" "}
+      (Instagram)
+    </li>
+    <li>
+      <ExternalLink url="https://www.instagram.com/sbeih.jpg/">
+        @sbeih.jpg
+      </ExternalLink>
+      - social media strategy for @palestine.academy and cultural merch
+      supporting the cause (Instagram)
+    </li>
+  </List>
 );
 
 const HowToHelp: React.FC = () => (
