@@ -1,0 +1,5 @@
+/docker-compose.override.yml
+/go-application/coverage.out
+/react-application/node_modules
+
+.DS_Store
