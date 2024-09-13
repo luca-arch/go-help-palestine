@@ -34,10 +34,10 @@ type telegramLinks struct {
 }
 
 type Message struct {
-	ChatID    string        `json:"chat_id"`              //nolint:tagliatelle // External API.
-	Links     telegramLinks `json:"link_preview_options"` //nolint:tagliatelle // External API.
-	ParseMode string        `json:"parse_mode"`           //nolint:tagliatelle // External API.
-	Text      string        `json:"text"`
+	ChatID string        `json:"chat_id"`              //nolint:tagliatelle // External API.
+	Links  telegramLinks `json:"link_preview_options"` //nolint:tagliatelle // External API.
+	Text   string        `json:"text"`
+	// ParseMode string        `json:"parse_mode"` // Needs escaping!
 }
 
 type MessageSender struct {
@@ -92,8 +92,8 @@ func (ms *MessageSender) LimitedSend(name string, message string) {
 		Links: telegramLinks{
 			IsDisabled: true,
 		},
-		ParseMode: "MarkdownV2",
-		Text:      fmt.Sprintf("**📣 New Message from %s**\n\n%s", name, message),
+		// ParseMode: "MarkdownV2", // Needs escaping!
+		Text: fmt.Sprintf("📣 New Message from %s\n\n%s", name, message),
 	}
 
 	payload, err := json.Marshal(msg)
