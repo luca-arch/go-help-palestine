@@ -118,7 +118,7 @@ const Conversation: React.FC = () => (
     <p>
       <em>
         It was at this point that I realised I had the potential to bring a very
-        tiny contribute. After all, long ago I used to make websites for a
+        tiny contribution. After all, long ago I used to make websites for a
         living.
       </em>
     </p>

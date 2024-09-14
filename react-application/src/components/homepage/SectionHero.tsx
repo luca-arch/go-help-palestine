@@ -44,6 +44,10 @@ const SectionHero: React.FC = () => (
       You can read it in full <Link to="stef-point-of-view">here</Link>, or you
       can scroll down the next section and immediately read what you can do.
     </p>
+
+    <p style={{ fontSize: "larger" }}>
+      <strong>This is only to help innocent victims!</strong>
+    </p>
   </Section>
 );
 
