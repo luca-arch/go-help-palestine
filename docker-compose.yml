@@ -23,5 +23,6 @@ services:
   redis:
     cpus: 0.25
     image: redis:7.4.0-alpine
+    mem_limit: "64M"
     volumes:
       - ./redis_data:/data
