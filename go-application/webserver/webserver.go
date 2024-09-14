@@ -14,21 +14,21 @@ import (
 )
 
 const (
-	// Default http.Server timeout values.
-	serverIdleTimeout  = 60
-	serverReadTimeout  = 30
-	serverWriteTimeout = 30
+	// Timeout values for the http.Server.
+	serverIdleTimeout  = 60 * time.Second
+	serverReadTimeout  = 30 * time.Second
+	serverWriteTimeout = 30 * time.Second
 )
 
 var ErrWebServer = errors.New("webserver error")
 
-// dataSource defines an interface that provides a list of Campaign objects.
-type dataSource interface {
+// Provider defines an interface that provides a list of Campaign objects.
+type Provider interface {
 	Campaigns() []models.Campaign
 }
 
-// telegramSend defines an interface that sends Telegram messages.
-type telegramSend interface {
+// Sender defines an interface that sends Telegram messages.
+type Sender interface {
 	Send(string, string) error
 }
 
@@ -51,10 +51,10 @@ func (ws *WebServer) ListenAndServe(ctx context.Context, addr string) error {
 	s := &http.Server{ //nolint:exhaustruct // Defaults are ok
 		Addr:              addr,
 		Handler:           ws.mux,
-		IdleTimeout:       serverIdleTimeout * time.Second,
-		ReadHeaderTimeout: serverReadTimeout * time.Second,
-		ReadTimeout:       serverReadTimeout * time.Second,
-		WriteTimeout:      serverWriteTimeout * time.Second,
+		IdleTimeout:       serverIdleTimeout,
+		ReadHeaderTimeout: serverReadTimeout,
+		ReadTimeout:       serverReadTimeout,
+		WriteTimeout:      serverWriteTimeout,
 		BaseContext: func(_ net.Listener) context.Context {
 			return ctx
 		},
@@ -68,7 +68,7 @@ func (ws *WebServer) ListenAndServe(ctx context.Context, addr string) error {
 }
 
 // WithCampaignsEndpoint exposes the data source Campaigns in a JSON endpoint.
-func (ws *WebServer) WithCampaignsEndpoint(path string, source dataSource) {
+func (ws *WebServer) WithCampaignsEndpoint(path string, source Provider) {
 	ws.mux.Handle("GET "+path, http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		w.Header().Set("Cache-Control", "public, max-age=1800")
@@ -81,7 +81,7 @@ func (ws *WebServer) WithCampaignsEndpoint(path string, source dataSource) {
 }
 
 // WithContactsEndpoint enables the endpoint used by the contact form.
-func (ws *WebServer) WithContactsEndpoint(path string, tg telegramSend) {
+func (ws *WebServer) WithContactsEndpoint(path string, tg Sender) {
 	type contact struct {
 		Message string `json:"message"`
 		Name    string `json:"name"`

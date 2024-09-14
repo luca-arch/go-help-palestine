@@ -1,7 +1,7 @@
 package crawler
 
 import (
-	"crypto/md5" //nolint:gosec
+	"crypto/sha256"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -22,8 +22,7 @@ func NewDefaultPersistence(sourceURL string) *Persistence {
 		dir = os.TempDir()
 	}
 
-	//nolint:gosec // md5 is fine for this purpose.
-	filePath := fmt.Sprintf("%s%x.json", dir, md5.Sum([]byte(sourceURL)))
+	filePath := fmt.Sprintf("%s%x.json", dir, sha256.Sum256([]byte(sourceURL)))
 
 	return &Persistence{
 		filePath: filePath,
