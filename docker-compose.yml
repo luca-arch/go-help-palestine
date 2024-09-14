@@ -4,6 +4,8 @@ services:
   backend:
     build: ./go-application
     cpus: 0.25
+    depends_on:
+      - redis
     environment:
       TG_BOT_TOKEN: ""
       TG_CHANNEL: ""
@@ -17,3 +19,9 @@ services:
     mem_limit: "256M"
     ports:
       - "127.0.0.1:8080:8080"
+
+  redis:
+    cpus: 0.25
+    image: redis:7.4.0-alpine
+    volumes:
+      - ./redis_data:/data
