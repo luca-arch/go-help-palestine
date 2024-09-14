@@ -1,17 +1,15 @@
 import {
+  getCampaignURL,
   getCharitiesCampaigns,
   getIndividualCampaigns,
 } from "src/helpers/donations";
 import { useEffect, useState } from "react";
 import type { Campaign } from "src/helpers/donations";
+import ExternalLink from "./ExternalLink";
 import styled from "styled-components";
 
 // Number of Campaigns to show at once. Pagination is done client side.
 const PAGE_SIZE = 12;
-
-type DonationBadgeProps = {
-  url: URL;
-};
 
 enum DonationType {
   Charities = "charities",
@@ -126,7 +124,11 @@ const Results: React.FC<ResultsProps> = ({ campaigns }) => {
 
             <p>{item.description}</p>
 
-            <DonationBadge url={item.link} />
+            <Badge>
+              <ExternalLink url={getCampaignURL(item)}>
+                Donate now
+              </ExternalLink>
+            </Badge>
           </Item>
         ))}
       </List>
@@ -156,15 +158,6 @@ const Results: React.FC<ResultsProps> = ({ campaigns }) => {
     </>
   );
 };
-
-// Donations Badge render with link.
-const DonationBadge: React.FC<DonationBadgeProps> = ({ url }) => (
-  <Badge>
-    <a href={url.toString()} target="_blank">
-      Donate now
-    </a>
-  </Badge>
-);
 
 // Donations list browser.
 const DonationsList: React.FC = () => {

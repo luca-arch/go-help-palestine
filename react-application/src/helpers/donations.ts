@@ -1,7 +1,9 @@
 const requestTimeoutSeconds = 15;
 
 export type Campaign = {
+  clicks: number;
   description: string;
+  id: string,
   link: URL;
   title: string;
 };
@@ -42,9 +44,14 @@ const getCampaigns = (endpoint: string): Promise<Campaign[]> => {
           })
           // Remove null elements.
           .filter((item: Campaign | null) => item !== null)
+          // Sort by number of clicks, ascending.
+          .sort((a, b) => a.clicks - b.clicks)
       );
     });
 };
+
+export const getCampaignURL = (campaign: Campaign) =>
+  new URL(`/api/campaign/${campaign.id}`, location.origin);
 
 export const getCharitiesCampaigns = (): Promise<Campaign[]> =>
   getCampaigns("/api/list/charities");
