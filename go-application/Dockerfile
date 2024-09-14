@@ -6,11 +6,9 @@ WORKDIR /mnt/src
 COPY go.mod go.sum ./
 RUN go mod download
 
+COPY app app/
 COPY cmd cmd/
-COPY crawler crawler/
 COPY models models/
-COPY telegram telegram/
-COPY webserver webserver/
 RUN go build -o go-help-palestine ./cmd/server/main.go
 
 

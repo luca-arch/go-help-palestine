@@ -1,4 +1,4 @@
-package webserver
+package app
 
 import (
 	"context"
@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"github.com/luca-arch/go-help-palestine/models"
+	"github.com/x-way/crawlerdetect"
 )
 
 const (
@@ -22,14 +23,20 @@ const (
 
 var ErrWebServer = errors.New("webserver error")
 
+// Indexer defines an interface that provides a Campaign lookup function.
+type Indexer interface {
+	Campaign(string) *models.Campaign
+	RegisterClick(context.Context, string)
+}
+
 // Provider defines an interface that provides a list of Campaign objects.
 type Provider interface {
-	Campaigns() []models.Campaign
+	Campaigns(string) []models.Campaign
 }
 
 // Sender defines an interface that sends Telegram messages.
 type Sender interface {
-	Send(string, string) error
+	Send(models.TelegramMessage) error
 }
 
 // WebServer is a concrete type that wraps an HTTP ServeMux.
@@ -38,8 +45,8 @@ type WebServer struct {
 	mux    *http.ServeMux
 }
 
-// New sets up a new WebServer with defaults and then returns it.
-func New() *WebServer {
+// NewWebServer sets up a new WebServer with defaults and then returns it.
+func NewWebServer() *WebServer {
 	return &WebServer{
 		logger: slog.New(slog.NewTextHandler(io.Discard, nil)),
 		mux:    &http.ServeMux{},
@@ -68,27 +75,22 @@ func (ws *WebServer) ListenAndServe(ctx context.Context, addr string) error {
 }
 
 // WithCampaignsEndpoint exposes the data source Campaigns in a JSON endpoint.
-func (ws *WebServer) WithCampaignsEndpoint(path string, source Provider) {
-	ws.mux.Handle("GET "+path, http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
+func (ws *WebServer) WithCampaignsEndpoint(groupName string, source Provider) {
+	ws.mux.Handle("GET /api/list/"+groupName, http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		w.Header().Set("Cache-Control", "public, max-age=1800")
 		w.WriteHeader(http.StatusOK)
 
-		if err := json.NewEncoder(w).Encode(source.Campaigns()); err != nil {
+		if err := json.NewEncoder(w).Encode(source.Campaigns(groupName)); err != nil {
 			ws.logger.Warn("could not serve response", "error", err)
 		}
 	}))
 }
 
 // WithContactsEndpoint enables the endpoint used by the contact form.
-func (ws *WebServer) WithContactsEndpoint(path string, tg Sender) {
-	type contact struct {
-		Message string `json:"message"`
-		Name    string `json:"name"`
-	}
-
-	ws.mux.Handle("POST "+path, http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		var in contact
+func (ws *WebServer) WithContactsEndpoint(tg Sender) {
+	ws.mux.Handle("POST /api/contact", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		var in models.TelegramMessage
 
 		if err := json.NewDecoder(r.Body).Decode(&in); err != nil {
 			w.WriteHeader(http.StatusBadRequest)
@@ -96,7 +98,7 @@ func (ws *WebServer) WithContactsEndpoint(path string, tg Sender) {
 			return
 		}
 
-		if err := tg.Send(in.Name, in.Message); err != nil {
+		if err := tg.Send(in); err != nil {
 			w.WriteHeader(http.StatusBadRequest)
 
 			json.NewEncoder(w).Encode(err.Error()) //nolint:errcheck
@@ -113,4 +115,26 @@ func (ws *WebServer) WithLogger(logger *slog.Logger) *WebServer {
 	ws.logger = logger
 
 	return ws
+}
+
+// WithRedirectEndpoint redirects to a campaign URL given its ID.
+func (ws *WebServer) WithRedirectEndpoint(index Indexer) {
+	ws.mux.Handle("GET /api/campaign/{id}", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		id := r.PathValue("id")
+		campaign := index.Campaign(id)
+
+		if campaign == nil {
+			w.WriteHeader(http.StatusNotFound)
+
+			return
+		}
+
+		if !crawlerdetect.IsCrawler(r.UserAgent()) {
+			// Background execution not to block the request.
+			go index.RegisterClick(context.Background(), id) //nolint:contextcheck
+		}
+
+		w.Header().Set("Location", campaign.Link)
+		w.WriteHeader(http.StatusPermanentRedirect)
+	}))
 }
