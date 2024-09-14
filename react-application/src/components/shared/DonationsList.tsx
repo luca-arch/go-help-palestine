@@ -168,6 +168,7 @@ const DonationsList: React.FC = () => {
 
   useEffect(() => {
     setIsLoading(true);
+    setError(undefined);
 
     (selectedType === DonationType.Charities
       ? getCharitiesCampaigns()
@@ -175,7 +176,7 @@ const DonationsList: React.FC = () => {
     )
       .then((result) => setCampaigns(result))
       .catch((err: Error) => setError(err))
-      .then(() => setIsLoading(false));
+      .finally(() => setIsLoading(false));
   }, [selectedType]);
 
   return (

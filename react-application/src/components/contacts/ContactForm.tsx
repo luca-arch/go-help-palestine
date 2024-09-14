@@ -54,6 +54,7 @@ const ContactsForm: React.FC = () => {
   const [message, setMessage] = useState("");
 
   const onSend = () => {
+    setError(undefined);
     setIsSending(true);
 
     sendMessage({ message, name })
