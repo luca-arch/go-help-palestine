@@ -224,9 +224,9 @@ const HowToHelp: React.FC = () => (
       to you but remember <strong>every single count</strong> and this is a good
       way to show support.
       <br />
-      Here is an{" "}
+      Here is an awesome list{" "}
       <ExternalLink url="https://www.google.com/search?q=what+is+an+awesome+list">
-        awesome list
+        <span style={{ fontSize: "x-small" }}>(what is an awesome list?)</span>
       </ExternalLink>{" "}
       of some active accounts you can follow to stay informed and support the
       cause.
