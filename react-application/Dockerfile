@@ -16,6 +16,7 @@ RUN npm run build
 FROM nginx:1.27-alpine3.20
 
 COPY --from=assets /tmp/dist /mnt/html
+COPY 404.html /mnt/html
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Pre-compress static files.

@@ -11,10 +11,7 @@ const Image = styled.img`
 // Homepage first section.
 const SectionHero: React.FC = () => (
   <Section>
-    <Image
-      alt="What we can do to help Palestine"
-      src="/assets/banner.jpg"
-    />
+    <Image alt="What we can do to help Palestine" src="/assets/banner.jpg" />
 
     <h1 style={{ fontSize: "2em" }}>A message from the author</h1>
 

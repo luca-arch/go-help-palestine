@@ -47,7 +47,7 @@ const Header: React.FC = () => (
     <a href="/contacts">
       {" "}
       {/* Do not use Link component here, it breaks on /contacts page */}
-      <img src="/contacts.png" alt="✉️" title="Send us a message" />
+      <img src="/assets/contacts.png" alt="✉️" title="Send us a message" />
     </a>
   </HTMLHeader>
 );

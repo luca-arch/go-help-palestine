@@ -76,7 +76,7 @@ const ShareLinks: React.FC = () => (
     <div>
       <ExternalLink url={FB_SHARE_URL}>
         <img
-          src="/icon-facebook.png"
+          src="/assets/icon-facebook.png"
           alt="Share on Facebook"
           title="Share on Facebook"
         />{" "}
@@ -84,13 +84,17 @@ const ShareLinks: React.FC = () => (
       </ExternalLink>
 
       <ExternalLink url={X_SHARE_URL}>
-        <img src="/icon-twitter.png" alt="Share on X" title="Share on X" />{" "}
+        <img
+          src="/assets/icon-twitter.png"
+          alt="Share on X"
+          title="Share on X"
+        />{" "}
         Twitter / X
       </ExternalLink>
 
       <ExternalLink url={LINKEDIN_SHARE_URL}>
         <img
-          src="/icon-linkedin.png"
+          src="/assets/icon-linkedin.png"
           alt="Share on LinkedIn"
           title="Share on LinkedIn"
         />{" "}
@@ -99,7 +103,7 @@ const ShareLinks: React.FC = () => (
 
       <ExternalLink url={WHATSAPP_SHARE_URL}>
         <img
-          src="/icon-whatsapp.png"
+          src="/assets/icon-whatsapp.png"
           alt="Share on WhatsApp"
           title="Share on WhatsApp"
         />{" "}
@@ -108,7 +112,7 @@ const ShareLinks: React.FC = () => (
 
       <a href="#" onClick={copyToClipboard}>
         <img
-          src="/icon-copy.png"
+          src="/assets/icon-copy.png"
           alt="Copy to clipboard"
           title="Copy to clipboard"
         />{" "}
