@@ -1,20 +1,19 @@
 import { Link } from "react-router-dom";
 import Section from "../shared/Section";
+import styled from "styled-components";
 
-const imgStyle: React.CSSProperties = {
-  borderRadius: "5px",
-  display: "block",
-  width: "100%",
-};
+const Image = styled.img`
+  border-radius: 5px;
+  display: block;
+  width: 100%;
+`;
 
 // Homepage first section.
 const SectionHero: React.FC = () => (
   <Section>
-    <img
+    <Image
       alt="What we can do to help Palestine"
-      id="main-banner"
-      src="/banner.jpg"
-      style={imgStyle}
+      src="/assets/banner.jpg"
     />
 
     <h1 style={{ fontSize: "2em" }}>A message from the author</h1>
@@ -43,10 +42,6 @@ const SectionHero: React.FC = () => (
     <p>
       You can read it in full <Link to="stef-point-of-view">here</Link>, or you
       can scroll down the next section and immediately read what you can do.
-    </p>
-
-    <p style={{ fontSize: "larger" }}>
-      <strong>This is only to help innocent victims!</strong>
     </p>
   </Section>
 );
