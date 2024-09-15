@@ -3,7 +3,7 @@ const requestTimeoutSeconds = 15;
 export type Campaign = {
   clicks: number;
   description: string;
-  id: string,
+  id: string;
   link: URL;
   title: string;
 };

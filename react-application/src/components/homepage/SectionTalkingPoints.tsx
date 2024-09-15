@@ -61,7 +61,7 @@ const SectionTalkingPoints: React.FC = () => (
 
       <Item>
         <strong>Remember!</strong>
-        Every little counts! This site was made by someone who didn't think
+        Every little helps! This site was made by someone who didn't think
         they'd matter.
       </Item>
 

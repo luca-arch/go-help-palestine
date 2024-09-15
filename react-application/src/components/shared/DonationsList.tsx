@@ -125,9 +125,7 @@ const Results: React.FC<ResultsProps> = ({ campaigns }) => {
             <p>{item.description}</p>
 
             <Badge>
-              <ExternalLink url={getCampaignURL(item)}>
-                Donate now
-              </ExternalLink>
+              <ExternalLink url={getCampaignURL(item)}>Donate now</ExternalLink>
             </Badge>
           </Item>
         ))}

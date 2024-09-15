@@ -238,7 +238,7 @@ const HowToHelp: React.FC = () => (
 
     <p>
       Even it it's just one dollar, less than a cup of coffee, remember: every
-      little counts!
+      little helps!
       <br />
       See the donations section in the <Link to="/">home page</Link> and pick
       any one of your choice.

@@ -89,8 +89,8 @@ const Conversation: React.FC = () => (
       others work in other jobs and then just do what they can outside of their
       job.
       <br />I think as long as you’re aware of your privilege,{" "}
-      <strong>stay educated</strong>{" "}
-      and doing what you can, it’s already better than a lot of people.
+      <strong>stay educated</strong> and doing what you can, it’s already better
+      than a lot of people.
       <br />
       It’s normal to feel helpless as an individual, but it’s about connecting
       and working together, not doing something alone that has a big impact
