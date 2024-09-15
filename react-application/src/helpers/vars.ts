@@ -3,6 +3,11 @@ export const GITHUB_REPO_URL = new URL(
   "https://github.com/luca-arch/go-help-palestine",
 );
 
+// Instagram page.
+export const INSTAGRAM_MAIN_URL = new URL(
+  "https://www.instagram.com/gohelppalestine/",
+);
+
 // Obfuscated email addresses, the tiniest help against spam bots.
 export const MAIL_CHARITY =
   "yXoXuXrXpXaXlXcXhXaXrXiXtXiXeXsX@XgXmXaXiXlX.XcXoXm";

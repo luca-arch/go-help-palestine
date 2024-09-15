@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Blockquote = styled.blockquote`
   border-left: solid 4px #111111;
   margin: 16px 40px;
-  padding: 1px 0 1px 4px;
+  padding: 1px 4px 1px 4px;
   text-align: justify;
 
   &.highlight {
