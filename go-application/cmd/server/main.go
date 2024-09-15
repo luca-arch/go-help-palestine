@@ -39,7 +39,7 @@ func Logger(debug bool) *slog.Logger {
 // Redis returns a new Redis connection.
 func Redis() *redis.Client {
 	addr := "redis:6379"
-	if os.Getenv("ISDOCKER") != "1" {
+	if !isDocker() {
 		addr = "localhost:6379"
 	}
 
@@ -52,11 +52,16 @@ func Redis() *redis.Client {
 	})
 }
 
+// isDocker returns whether the application is running in a Docker container.
+func isDocker() bool {
+	return os.Getenv("ISDOCKER") == "1"
+}
+
 func main() {
 	// Set up dependencies.
 	client := &http.Client{Timeout: CrawlerTimeout} //nolint:exhaustruct // defaults are ok
 	ctx := context.Background()
-	logger := Logger(true)
+	logger := Logger(!isDocker())
 	tgChannel, tgToken := os.Getenv("TG_CHANNEL"), os.Getenv("TG_BOT_TOKEN")
 	tgClient := &http.Client{Timeout: SenderTimeout} //nolint:exhaustruct // defaults are ok
 
