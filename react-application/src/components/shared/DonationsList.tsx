@@ -67,6 +67,12 @@ const Item = styled.li`
 
   > p {
     min-height: 50px;
+
+    span {
+      display: block;
+      font-family: initial;
+      margin-top: 6px;
+    }
   }
 `;
 
@@ -89,6 +95,22 @@ const Paginator = styled.div`
     font-size: 14px;
   }
 `;
+
+const getCampaignSource = (u: URL): string => {
+  const source = u.origin
+    .replace(/^http[s]:\/\//, "")
+    .replace("www.", "")
+    .toLowerCase();
+
+  switch (source) {
+    case "gofundme.com":
+      return "GoFundMe";
+    case "paypal.com":
+      return "PayPal";
+    default:
+      return source;
+  }
+};
 
 type ResultsProps = {
   campaigns: Campaign[];
@@ -122,7 +144,11 @@ const Results: React.FC<ResultsProps> = ({ campaigns }) => {
           <Item key={index}>
             <strong>{item.title}</strong>
 
-            <p>{item.description}</p>
+            <p>
+              {item.description}
+              <br />
+              <span>Source: {getCampaignSource(item.link)}</span>
+            </p>
 
             <Badge>
               <ExternalLink url={getCampaignURL(item)}>Donate now</ExternalLink>
