@@ -9,3 +9,18 @@ export const scrollToSharedLinks = (e: React.MouseEvent) => {
     behavior: "smooth",
   });
 };
+
+// Wraoper for `AbortSignal.timeout()` (not supported by every browser).
+export const getAbortSignalTimeout = (
+  seconds: number,
+): AbortSignal | undefined => {
+  if ("AbortSignal" in window === false) {
+    return undefined;
+  }
+
+  if (!AbortSignal.timeout) {
+    return undefined;
+  }
+
+  return AbortSignal.timeout(seconds * 1000);
+};

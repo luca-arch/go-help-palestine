@@ -1,3 +1,5 @@
+import { getAbortSignalTimeout } from "./share";
+
 const requestTimeoutSeconds = 15;
 
 export type Message = {
@@ -10,7 +12,7 @@ export const sendMessage = (message: Message): Promise<void> => {
     .fetch("/api/contact", {
       body: JSON.stringify(message),
       method: "POST",
-      signal: AbortSignal.timeout(requestTimeoutSeconds * 1000),
+      signal: getAbortSignalTimeout(requestTimeoutSeconds),
     })
     .then((response) => {
       if (response.ok) {

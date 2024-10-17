@@ -1,3 +1,5 @@
+import { getAbortSignalTimeout } from "./share";
+
 const requestTimeoutSeconds = 15;
 
 export type Campaign = {
@@ -11,7 +13,7 @@ export type Campaign = {
 const getCampaigns = (endpoint: string): Promise<Campaign[]> => {
   return window
     .fetch(endpoint, {
-      signal: AbortSignal.timeout(requestTimeoutSeconds * 1000),
+      signal: getAbortSignalTimeout(requestTimeoutSeconds),
     })
     .then((response) => {
       if (response.ok) {
