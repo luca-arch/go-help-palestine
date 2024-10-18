@@ -186,6 +186,22 @@ func (c *Crawler) Crawl(ctx context.Context, group *models.CampaignsGroup) error
 	return nil
 }
 
+func (c *Crawler) Metrics() map[string]int {
+	m := make(map[string]int, 0)
+
+	for _, group := range c.groups {
+		for _, campaign := range group.Campaigns {
+			if campaign.TotalClicks == 0 {
+				continue
+			}
+
+			m[campaign.Title] = campaign.TotalClicks
+		}
+	}
+
+	return m
+}
+
 func (c *Crawler) RegisterClick(ctx context.Context, id string) {
 	err := c.rdb.Incr(ctx, "click:"+id).Err()
 	if err != nil {

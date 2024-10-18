@@ -82,6 +82,7 @@ func main() {
 
 	ws.WithCampaignsEndpoint("charities", crawler)
 	ws.WithCampaignsEndpoint("individuals", crawler)
+	ws.WithMetricsEndpoint(crawler)
 	ws.WithRedirectEndpoint(crawler)
 
 	// Set up Telegram integration.

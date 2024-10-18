@@ -29,6 +29,11 @@ type Indexer interface {
 	RegisterClick(context.Context, string)
 }
 
+// Metrics defines an interface that returns simple metrics for campaigns and clicks.
+type Metrics interface {
+	Metrics() map[string]int
+}
+
 // Provider defines an interface that provides a list of Campaign objects.
 type Provider interface {
 	Campaigns(string) []models.Campaign
@@ -115,6 +120,23 @@ func (ws *WebServer) WithLogger(logger *slog.Logger) *WebServer {
 	ws.logger = logger
 
 	return ws
+}
+
+// WithMetricsEndpoint exposes the total number of clicks (internal endpoint).
+func (ws *WebServer) WithMetricsEndpoint(metrics Metrics) {
+	ws.mux.Handle("GET /internal/metrics", http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+
+		if err := json.NewEncoder(w).Encode(metrics.Metrics()); err != nil {
+			ws.logger.Warn("could not serve response", "error", err)
+			w.WriteHeader(http.StatusInternalServerError)
+
+			return
+		}
+
+		w.WriteHeader(http.StatusOK)
+	}))
 }
 
 // WithRedirectEndpoint redirects to a campaign URL given its ID.
