@@ -8,5 +8,5 @@ github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f h1:lO4WD4F/r
 github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f/go.mod h1:cuUVRXasLTGF7a8hSLbxyZXjz+1KgoB3wDUb6vlszIc=
 github.com/redis/go-redis/v9 v9.6.1 h1:HHDteefn6ZkTtY5fGUE8tj8uy85AHk6zP7CpzIAM0y4=
 github.com/redis/go-redis/v9 v9.6.1/go.mod h1:0C0c6ycQsdpVNQpxb1njEQIqkx5UcsM8FJCQLgE9+RA=
-github.com/x-way/crawlerdetect v0.2.23 h1:ZUKBaTC2RMjruRXGCWNJ82BJp3l9VDvtEhZnL6zFC/w=
-github.com/x-way/crawlerdetect v0.2.23/go.mod h1:s6iUJZPq/WNBJThPRK+zk8ah7iIbGUZn9nYWMls3YP0=
+github.com/x-way/crawlerdetect v0.2.24 h1:kZDzSeiXB64M+Bknopn5GddHT+LBocD61jEjqDOufLE=
+github.com/x-way/crawlerdetect v0.2.24/go.mod h1:s6iUJZPq/WNBJThPRK+zk8ah7iIbGUZn9nYWMls3YP0=

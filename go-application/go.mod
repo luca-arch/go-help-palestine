@@ -4,7 +4,7 @@ go 1.23.0
 
 require (
 	github.com/redis/go-redis/v9 v9.6.1
-	github.com/x-way/crawlerdetect v0.2.23
+	github.com/x-way/crawlerdetect v0.2.24
 )
 
 require (
