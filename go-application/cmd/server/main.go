@@ -12,10 +12,11 @@ import (
 )
 
 const (
-	CrawlerTimeout    = 10 * time.Second                                                                                                                  // Maximum request time for the crawler.
-	SenderTimeout     = 30 * time.Second                                                                                                                  // Maximum request time for the Telegram sender.
-	SourceCharity     = "https://docs.google.com/spreadsheets/d/1pPXurDxcr4VYqPaAXxrrZ6Gh56zTlJzOyeuBSXqEaHk/export?format=csv&gid=188001176&usp=sharing" // Source sheet (charity orgs).
-	SourceIndividuals = "https://docs.google.com/spreadsheets/d/1pPXurDxcr4VYqPaAXxrrZ6Gh56zTlJzOyeuBSXqEaHk/export?format=csv&gid=0&usp=sharing"         //  Source sheet (individuals).
+	CrawlerTimeout      = 10 * time.Second                                                                                                                  // Maximum request time for the crawler.
+	SenderTimeout       = 30 * time.Second                                                                                                                  // Maximum request time for the Telegram sender.
+	SourceCharity       = "https://docs.google.com/spreadsheets/d/1pPXurDxcr4VYqPaAXxrrZ6Gh56zTlJzOyeuBSXqEaHk/export?format=csv&gid=188001176&usp=sharing" // Source sheet (charity orgs).
+	SourceIndividuals   = "https://docs.google.com/spreadsheets/d/1pPXurDxcr4VYqPaAXxrrZ6Gh56zTlJzOyeuBSXqEaHk/export?format=csv&gid=0&usp=sharing"         //  Source sheet (individuals).
+	SourceWatermelonFam = "https://docs.google.com/spreadsheets/d/1a2JQDLaWl7n4lzpfGDMT3HYHDjY8Ej9gkH2TWO3fKdE/export?format=csv&gid=0&usp=sharing"         //  Source sheet (Watermelon Family).
 )
 
 // Logger returns a new slog.Logger.
@@ -73,6 +74,7 @@ func main() {
 		WithLogger(logger).
 		AddGroup("charities", SourceCharity).
 		AddGroup("individuals", SourceIndividuals).
+		AddGroup("watermelon", SourceWatermelonFam).
 		Reindex().
 		Background(ctx)
 
@@ -82,6 +84,7 @@ func main() {
 
 	ws.WithCampaignsEndpoint("charities", crawler)
 	ws.WithCampaignsEndpoint("individuals", crawler)
+	ws.WithCampaignsEndpoint("watermelon", crawler)
 	ws.WithMetricsEndpoint(crawler)
 	ws.WithRedirectEndpoint(crawler)
 
