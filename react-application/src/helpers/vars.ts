@@ -18,3 +18,6 @@ export const SAMMY_IG_URL = new URL("https://www.instagram.com/sammyobeid/");
 export const SPREADSHEET_URL = new URL(
   "https://docs.google.com/spreadsheets/d/1pPXurDxcr4VYqPaAXxrrZ6Gh56zTlJzOyeuBSXqEaHk/",
 );
+export const WATERMELON_IG_URL = new URL(
+  "https://www.instagram.com/watermelonfamily16/",
+);
