@@ -8,6 +8,9 @@ export const INSTAGRAM_MAIN_URL = new URL(
   "https://www.instagram.com/gohelppalestine/",
 );
 
+// Twitter/X page.
+export const TWITTER_MAIN_URL = new URL("https://x.com/gohelppalestine");
+
 // Obfuscated email addresses, the tiniest help against spam bots.
 export const MAIL_CHARITY =
   "yXoXuXrXpXaXlXcXhXaXrXiXtXiXeXsX@XgXmXaXiXlX.XcXoXm";

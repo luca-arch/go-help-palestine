@@ -1,4 +1,8 @@
-import { GITHUB_REPO_URL, INSTAGRAM_MAIN_URL } from "src/helpers/vars";
+import {
+  GITHUB_REPO_URL,
+  INSTAGRAM_MAIN_URL,
+  TWITTER_MAIN_URL,
+} from "src/helpers/vars";
 import ExternalLink from "./ExternalLink";
 import styled from "styled-components";
 
@@ -53,6 +57,7 @@ const HTMLFooter = styled.footer`
       text-decoration: none;
 
       img {
+        background-color: #ffffff;
         height: 24px;
         vertical-align: middle;
         width: 24px;
@@ -105,6 +110,10 @@ const Footer: React.FC = () => (
 
         <ExternalLink url={INSTAGRAM_MAIN_URL}>
           <img src="/assets/icon-instagram.png" /> @gohelppalestine
+        </ExternalLink>
+
+        <ExternalLink url={TWITTER_MAIN_URL}>
+          <img src="/assets/icon-twitter.png" /> @gohelppalestine on X
         </ExternalLink>
       </p>
 
