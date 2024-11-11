@@ -2,6 +2,7 @@ import {
   getCampaignURL,
   getCharitiesCampaigns,
   getIndividualCampaigns,
+  getWatermelonFamiliesCampaigns,
 } from "src/helpers/donations";
 import { useEffect, useState } from "react";
 import type { Campaign } from "src/helpers/donations";
@@ -14,6 +15,7 @@ const PAGE_SIZE = 12;
 enum DonationType {
   Charities = "charities",
   Individuals = "individuals",
+  WaterMelon = "watermelon",
 }
 
 const Badge = styled.div`
@@ -194,10 +196,21 @@ const DonationsList: React.FC = () => {
     setIsLoading(true);
     setError(undefined);
 
-    (selectedType === DonationType.Charities
-      ? getCharitiesCampaigns()
-      : getIndividualCampaigns()
-    )
+    let promise;
+
+    switch (selectedType) {
+      case DonationType.Charities:
+        promise = getCharitiesCampaigns();
+        break;
+      case DonationType.Individuals:
+        promise = getIndividualCampaigns();
+        break;
+      case DonationType.WaterMelon:
+        promise = getWatermelonFamiliesCampaigns();
+        break;
+    }
+
+    promise
       .then((result) => setCampaigns(result))
       .catch((err: Error) => setError(err))
       .finally(() => setIsLoading(false));
@@ -216,14 +229,15 @@ const DonationsList: React.FC = () => {
           />
           &nbsp; Charities
         </label>
+        &nbsp;
         <label>
           <input
-            checked={selectedType === DonationType.Individuals}
-            onChange={() => setSelectedType(DonationType.Individuals)}
+            checked={selectedType === DonationType.WaterMelon}
+            onChange={() => setSelectedType(DonationType.WaterMelon)}
             type="radio"
-            value={DonationType.Individuals}
+            value={DonationType.WaterMelon}
           />
-          &nbsp; Individuals
+          &nbsp; WaterMelon
         </label>
       </p>
 

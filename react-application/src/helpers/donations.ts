@@ -60,3 +60,6 @@ export const getCharitiesCampaigns = (): Promise<Campaign[]> =>
 
 export const getIndividualCampaigns = (): Promise<Campaign[]> =>
   getCampaigns("/api/list/individuals");
+
+export const getWatermelonFamiliesCampaigns = (): Promise<Campaign[]> =>
+  getCampaigns("/api/list/watermelon");
