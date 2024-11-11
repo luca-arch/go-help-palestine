@@ -1,4 +1,8 @@
-import { SAMMY_IG_URL, SPREADSHEET_URL } from "src/helpers/vars";
+import {
+  SAMMY_IG_URL,
+  SPREADSHEET_URL,
+  WATERMELON_IG_URL,
+} from "src/helpers/vars";
 import DonationsList from "../shared/DonationsList";
 import ExternalLink from "../shared/ExternalLink";
 import { Link } from "react-router-dom";
@@ -25,6 +29,19 @@ const SectionDonations: React.FC = () => (
       <ExternalLink url={SPREADSHEET_URL}>this Google spreadsheet</ExternalLink>
       , which is taken care of by{" "}
       <ExternalLink url={SAMMY_IG_URL}>@sammyobeid</ExternalLink>.
+    </p>
+
+    <p>
+      <strong>📣 New!</strong> Starting from the 11th November, a new list of{" "}
+      charities called WaterMelon is published here.
+      <br />
+      This list will be rotated every so often by the people of{" "}
+      <ExternalLink url={WATERMELON_IG_URL}>@watermelonfamily16</ExternalLink>,
+      and it will only contain links to donations protected by the{" "}
+      <ExternalLink url="https://www.gofundme.com/en-au/c/safety/gofundme-guarantee">
+        GoFundMe Giving Guarantee program
+      </ExternalLink>
+      !
     </p>
 
     <p>
